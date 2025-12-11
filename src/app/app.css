@@ -587,6 +587,30 @@
     width: 100%;
     align-self: stretch;
     padding: 14px 16px;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 12px;
+  }
+  
+  .contact-col {
+    gap: 14px;
+  }
+  
+  .contact-col-end {
+    align-items: flex-start;
+  }
+  
+  .contact-item {
+    font-size: 13px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .contact-card span, .contact-item span {
+    font-size: 14px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    transform: translateY(2.5px);
   }
 
   .name-main {
