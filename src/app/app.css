@@ -641,15 +641,148 @@
   
   .cv-wrapper {
     width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 10px 20px !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 15px 25px !important;
     box-shadow: none !important;
     min-height: auto !important;
   }
   
   .controls {
     display: none !important;
+  }
+  
+  /* Reduce section spacing for print */
+  .about-section,
+  .exp-section,
+  .projects-section,
+  .skills-section,
+  .footer-section {
+    margin-bottom: 20px !important;
+    padding: 15px 30px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 900px !important;
+    width: 900px !important;
+  }
+  
+  .about-section {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  .exp-cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .artistic-header {
+    margin-bottom: 15px !important;
+    padding: 20px 30px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 900px !important;
+    width: 900px !important;
+  }
+  
+  /* Keep header layout horizontal */
+  .header-bottom {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px !important;
+    align-items: flex-start !important;
+  }
+  
+  .profile-photo {
+    width: 150px !important;
+    height: 150px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .contact-card {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    flex: 1 !important;
+    min-height: 150px !important;
+  }
+  
+  /* Tighter gaps in grids */
+  .skill-badges {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+  }
+
+  .badge {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
+  .exp-cards {
+    gap: 15px !important;
+  }
+  
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
+    gap: 12px !important;
+    justify-items: stretch !important;
+    align-items: stretch !important;
+  }
+
+  .projects-masonry {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .footer-section {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(300px, 1fr)) !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  
+  .languages-box,
+  .education-box-footer {
+    height: 100% !important;
+  }
+  
+  .tools-grid {
+    gap: 10px !important;
+  }
+  
+  /* Reduce padding in cards */
+  .exp-card {
+    padding: 18px !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .project-box {
+    padding: 18px !important;
+    min-height: 140px !important;
+  }
+  
+  .tool-card {
+    padding: 12px 8px !important;
+    min-height: 50px !important;
+  }
+  
+  .badge {
+    padding: 10px !important;
+  }
+  
+  /* Reduce text spacing */
+  h2 {
+    margin-bottom: 12px !important;
+  }
+  
+  p {
+    margin-bottom: 8px !important;
   }
   
   /* Force all backgrounds and colors */
@@ -665,7 +798,7 @@
     print-color-adjust: exact !important;
   }
   
-  /* Prevent page breaks */
+  /* Prevent page breaks inside cards */
   .artistic-header,
   .about-section,
   .exp-card,

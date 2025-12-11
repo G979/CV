@@ -1,6 +1,4 @@
 import { Component, ElementRef, ViewChild, computed, ChangeDetectionStrategy } from '@angular/core';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 interface Experience {
   role: string;
@@ -175,78 +173,92 @@ export class App {
     }
   ];
 
-  async downloadPDF() {
+  downloadPDF() {
     const element = this.cvContent.nativeElement;
     
-    // Hide button during export
-    const controls = document.querySelector('.controls') as HTMLElement;
-    if (controls) controls.style.display = 'none';
-    
-    // Wait a moment for any transitions to complete
-    await new Promise(resolve => setTimeout(resolve, 100));
-    
-    // Maximum quality settings
-    const options = {
-      scale: 4, // Very high resolution
-      useCORS: true,
-      allowTaint: false,
-      backgroundColor: '#f8f6f1',
-      logging: false,
-      width: element.scrollWidth,
-      height: element.scrollHeight,
-      windowWidth: element.scrollWidth,
-      windowHeight: element.scrollHeight,
-      scrollX: 0,
-      scrollY: 0,
-      x: 0,
-      y: 0
-    };
-    
-    try {
-      const canvas = await html2canvas(element, options);
-      
-      // Convert to high-quality image
-      const imgData = canvas.toDataURL('image/png', 1.0);
-      
-      // A4 dimensions in mm
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
-        compress: false
-      });
-      
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      
-      // Calculate image dimensions to fit A4
-      const imgWidth = pageWidth;
-      const imgHeight = (canvas.height * pageWidth) / canvas.width;
-      
-      // Add pages as needed
-      let heightLeft = imgHeight;
-      let position = 0;
-      
-      // First page
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'NONE');
-      heightLeft -= pageHeight;
-      
-      // Additional pages if needed
-      while (heightLeft > 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'NONE');
-        heightLeft -= pageHeight;
-      }
-      
-      pdf.save('Georgios_Vasilakis_CV.pdf');
-      
-    } catch (error) {
-      console.error('PDF generation failed:', error);
-      alert('Failed to generate PDF. Please try again.');
-    } finally {
-      // Show button again
-      if (controls) controls.style.display = 'flex';
+    // Create print window
+    const printWindow = window.open('', '', 'width=1200,height=800');
+    if (!printWindow) {
+      alert('Please allow pop-ups to export PDF');
+      return;
     }
+
+    // Get all stylesheets
+    const styles = Array.from(document.styleSheets)
+      .map(styleSheet => {
+        try {
+          return Array.from(styleSheet.cssRules)
+            .map(rule => rule.cssText)
+            .join('\n');
+        } catch (e) {
+          // External stylesheets might throw CORS errors
+          return '';
+        }
+      })
+      .join('\n');
+
+    // Clone the content
+    const htmlContent = element.innerHTML;
+    
+    // Create complete document with all styles
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Georgios Vasilakis - CV</title>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+          <style>
+            * {
+              box-sizing: border-box;
+              -webkit-print-color-adjust: exact !important;
+              print-color-adjust: exact !important;
+              color-adjust: exact !important;
+            }
+            
+            html, body {
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+            }
+            
+            ${styles}
+            
+            .controls {
+              display: none !important;
+            }
+            
+            @page {
+              size: A4;
+              margin: 0;
+            }
+            
+            @media print {
+              body, html {
+                margin: 0 !important;
+                padding: 0 !important;
+              }
+              .cv-wrapper {
+                padding: 20px !important;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          ${htmlContent}
+        </body>
+      </html>
+    `);
+    
+    printWindow.document.close();
+    
+    // Wait for content and images to load
+    printWindow.onload = function() {
+      setTimeout(() => {
+        printWindow.print();
+      }, 500);
+    };
   }
 }
