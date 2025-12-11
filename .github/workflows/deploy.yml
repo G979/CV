@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (browser output)
-        run: npm run build -- --output-mode=browser --base-href "/${{ github.event.repository.name }}/"
+      - name: Build (static output for Pages)
+        run: npm run build -- --output-mode=static --base-href "/${{ github.event.repository.name }}/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
