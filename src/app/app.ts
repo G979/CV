@@ -32,16 +32,16 @@ export class App {
   @ViewChild('cvContent') cvContent!: ElementRef;
 
   readonly name = 'Georgios Vasilakis';
-  readonly title = 'Frontend Developer | Software Developer | Blockchain Developer';
+  readonly title = 'Frontend Developer | Software Engineer | Blockchain Engineer';
   readonly location = 'Athens, Greece 🇬🇷';
   readonly phone = '+30 694 442 8973';
   readonly email = 'g979design@gmail.com';
   readonly website = 'g979-personalsite.web.app';
   readonly github = 'github.com/G979';
-  readonly photo = 'assets/CV.jpg';
+  readonly photo = 'assets/george.jpg';
 
   readonly headline = 'Making the web prettier, one component at a time';
-  readonly summary = `I build web experiences that combine technical precision with creative flair. From blockchain platforms to real-time logistics systems, I thrive on turning complex problems into elegant, user-friendly solutions. Outside of development, you'll find me watching and playing sports, traveling to new places and experiment with digital art.`;
+  readonly summary = `I'm a software and blockchain engineer based in Athens, with a background in Electrical & Computer Engineering. Over the past six years I've built platforms processing thousands of monthly B2B transactions, real-time logistics tracking systems, and Ethereum smart contracts for secure health data sharing — always aiming for that sweet spot where technical precision meets a genuinely enjoyable user experience. I've delivered 10+ freelance projects end-to-end, mentored junior developers, and led feature work on production platforms used by real clients every day. Outside of the editor, you'll find me watching or playing sports, planning my next trip, or experimenting with digital art.`;
 
   readonly String = String;
 
@@ -58,20 +58,21 @@ export class App {
     'Git',
     'DeepSeek',
     'ChatGPT',
-    'Copilot',
+    'GitHub Copilot',
     'Ethereum',
-    'Metamask',
+    'MetaMask',
     'Bootstrap',
-    'Angular Flex',
+    'Angular Flex-Layout',
     'Firebase',
     'Webpack',
-    'Jira'
-    
+    'Jira',
+    'Claude',
+    'PHP Laravel'
   ];
 
   readonly skills: Skill[] = [
     { name: 'Angular', level: 75, experience: '>5 years' },
-    { name: 'React', level: 50, experience: '1 year' },
+    { name: 'React', level: 75, experience: '1 year' },
     { name: 'TypeScript', level: 75, experience: '>5 years' },
     { name: 'JavaScript', level: 75, experience: '>2 years' },
     { name: 'CSS/SCSS', level: 75, experience: '>5 years' },
@@ -95,14 +96,14 @@ export class App {
 
   readonly experiences: Experience[] = [
     {
-      role: 'Front-End Developer',
+      role: 'Software Engineer',
       company: 'Digital Academy',
       dates: 'Oct 2023 – Present',
       bullets: [
-        'Led development of transfer platform processing 2K+ monthly transactions',
-        'Built responsive Angular applications for 25+ transfer clients',
-        'Improved client experience on 4 pre existed applications',
-        'Mentored junior developers on Angular development'
+        'Led development of a transfer platform processing 2,000+ monthly transactions',
+        'Built responsive Angular and PHP Laravel applications for 100+ companies',
+        'Improved client experience across 4 pre-existing applications',
+        'Mentored junior developers through full frontend training'
       ]
     },
     {
@@ -110,10 +111,10 @@ export class App {
       company: 'Elta Courier',
       dates: 'Jul 2021 – Jul 2023',
       bullets: [
-        'Developed Angular + Python Flask logistics tracking platform serving company users',
+        'Developed a React + Python Flask logistics tracking platform serving company users',
         'Integrated 5+ third-party APIs for payments, mapping, and notifications',
-        'Developed Single Angular web microservices for internal operations',
-        'Developed Pure HMTL/CSS/JS landing pages for marketing campaigns'
+        'Built standalone Angular web microservices for internal operations',
+        'Built HTML/CSS/JavaScript landing pages for marketing campaigns'
       ]
     },
     {
@@ -121,21 +122,21 @@ export class App {
       company: 'Nostos Software Solutions',
       dates: 'Sep 2018 – Nov 2019',
       bullets: [
-        'Help Develop a modulized ERP system for small companies using Angular and Node.j',
-        'Help Develop Websites for companies and individuals with WordPress',
-        'Help Develop Scaffolding Apps for betting purposes using Angular',
-        'Help Creating and attending small workshops for Angular and TypeScript lessons'
+        'Helped develop a modular ERP system for small companies using Angular and Node.js',
+        'Helped develop websites for companies and individuals using WordPress',
+        'Helped develop scaffolding apps for betting platforms using Angular',
+        'Helped create and lead small workshops on Angular and TypeScript'
       ]
     },
     {
-      role: 'Freelance Web Developer',
+      role: 'Freelance Software Engineer',
       company: 'Self-Employed',
       dates: 'Jan 2020 – Ongoing',
       bullets: [
-        'Delivered 10+ client projects with 100% satisfaction rating',
-        'Specialized in custom web design & rapid prototyping',
-        'Built progressive web apps increasing user engagement',
-        'Provided technical consultation for using them'
+        'Delivered 10+ full-stack client projects with a 100% satisfaction rating',
+        'Built full-stack web applications end-to-end, from Angular/React frontends to PHP Laravel backends',
+        'Designed REST APIs and built progressive web apps that increased user engagement',
+        'Provided ongoing technical consultation and support across the full development lifecycle'
       ]
     }
   ];
@@ -143,7 +144,7 @@ export class App {
   readonly projects: Project[] = [
     {
       name: 'Transfer Platform',
-      desc: 'Full-featured Angular platform for B2B payments with real-time tracking and reporting dashboard.',
+      desc: 'Full-featured Angular platform for B2B payments with real-time tracking and a reporting dashboard.',
       highlights: ['Angular 16+', 'RxJS', 'Material Design', 'REST APIs', 'PHP Laravel']
     },
     {
@@ -153,22 +154,22 @@ export class App {
     },
     {
       name: 'EC Refunds App',
-      desc: 'Web application for managing EC refunds department for quicker resolving.',
-      highlights: ['Angular', 'REST API', 'Python Flask', 'Real-time Updates']
+      desc: 'Web application for managing the EC refunds department for quicker resolution.',
+      highlights: ['Angular', 'REST API', 'React', 'Python Flask', 'Real-time Updates']
     },
     {
       name: 'Health Data Blockchain',
-      desc: 'Smart contract system for secure patient data sharing by using Ethereum network for security.',
+      desc: 'Smart contract system for secure patient data sharing, using the Ethereum network for security.',
       highlights: ['Solidity', 'Web3.js', 'React', 'Ethereum', 'Security']
     },
     {
       name: 'Transfer Widget',
-      desc: 'Embeddable widget enabling seamless transfer creation and processing integrated with the Transfer Platform.',
+      desc: 'Embeddable widget enabling seamless transfer creation and processing, integrated with the Transfer Platform.',
       highlights: ['Angular 16+', 'RxJS', 'Material Design', 'REST APIs', 'PHP Laravel']
     },
     {
       name: 'Youthfulguides',
-      desc: 'An app to faciliate the connection between travelers and local guides in Greece',
+      desc: 'An app to facilitate the connection between travelers and local guides in Greece.',
       highlights: ['Angular 19+', 'RxJS', 'Material Design', 'REST APIs', 'Node.js']
     }
   ];

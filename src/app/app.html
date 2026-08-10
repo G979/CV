@@ -5,14 +5,12 @@
   <!-- ARTISTIC HEADER -->
   <header class="artistic-header">
     <div class="header-decoration"></div>
-    <div class="header-top">
-      <h1 class="name-main">{{ name }}</h1>
-      <p class="title-accent">{{ title }}</p>
-      <p class="intro-text">{{ headline }}</p>
-    </div>
-    <div class="header-bottom">
-      <div class="profile-section">
-        <img [src]="photo" alt="{{ name }}" class="profile-photo">
+    <div class="header-row">
+      <img [src]="photo" alt="{{ name }}" class="profile-photo">
+      <div class="header-text">
+        <h1 class="name-main">{{ name }}</h1>
+        <p class="title-accent">{{ title }}</p>
+        <p class="intro-text">{{ headline }}</p>
       </div>
       <div class="contact-card">
         <div class="contact-col">
@@ -41,6 +39,10 @@
           <div class="contact-item">
             <i class="contact-icon bi bi-facebook"></i>
             <a class="contact-link" href="https://www.facebook.com/george.vasilakis1" target="_blank" rel="noopener">facebook.com/george.vasilakis1</a>
+          </div>
+          <div class="contact-item">
+            <i class="contact-icon bi bi-globe"></i>
+            <a class="contact-link" href="https://g979.github.io/g979-updated-portfolio/" target="_blank" rel="noopener">g979.github.io/g979-updated-portfolio</a>
           </div>
         </div>
       </div>
