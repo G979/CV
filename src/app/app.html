@@ -1,149 +1,83 @@
-<div class="cv-wrapper" #cvContent>
-  <!-- BOOTSTRAP ICONS CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  
-  <!-- ARTISTIC HEADER -->
-  <header class="artistic-header">
-    <div class="header-decoration"></div>
-    <div class="header-row">
-      <img [src]="photo" alt="{{ name }}" class="profile-photo">
-      <div class="header-text">
-        <h1 class="name-main">{{ name }}</h1>
-        <p class="title-accent">{{ title }}</p>
-        <p class="intro-text">{{ headline }}</p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-col">
-          <div class="contact-item">
-            <i class="contact-icon bi bi-envelope-fill"></i>
-            <span>{{ email }}</span>
-          </div>
-          <div class="contact-item">
-            <i class="contact-icon bi bi-telephone-fill"></i>
-            <span>{{ phone }}</span>
-          </div>
-          <div class="contact-item">
-            <i class="contact-icon bi bi-geo-alt-fill"></i>
-            <span>{{ location }}</span>
-          </div>
-        </div>
-        <div class="contact-col contact-col-end">
-          <div class="contact-item">
-            <i class="contact-icon bi bi-github"></i>
-            <a class="contact-link" href="https://github.com/G979" target="_blank" rel="noopener">github.com/G979</a>
-          </div>
-          <div class="contact-item">
-            <i class="contact-icon bi bi-linkedin"></i>
-            <a class="contact-link" href="https://www.linkedin.com/in/george-vasilakis-057562292/" target="_blank" rel="noopener">linkedin.com/in/george-vasilakis</a>
-          </div>
-          <div class="contact-item">
-            <i class="contact-icon bi bi-facebook"></i>
-            <a class="contact-link" href="https://www.facebook.com/george.vasilakis1" target="_blank" rel="noopener">facebook.com/george.vasilakis1</a>
-          </div>
-          <div class="contact-item">
-            <i class="contact-icon bi bi-globe"></i>
-            <a class="contact-link" href="https://g979.github.io/g979-updated-portfolio/" target="_blank" rel="noopener">g979.github.io/g979-updated-portfolio</a>
-          </div>
-        </div>
-      </div>
+<main class="cv-page" [attr.data-profile-id]="profile.id">
+  <header class="cv-header">
+    <div class="cv-header-photo-col">
+      <img class="cv-photo" [src]="profile.photo" alt="{{ profile.name }}">
+      <span class="cv-title-pill">{{ profile.jobTitle }}</span>
+    </div>
+    <div class="cv-header-text-col">
+      <h1 class="cv-name">{{ profile.name }}</h1>
+      <p class="cv-summary">{{ profile.summary }}</p>
     </div>
   </header>
 
-  <!-- ABOUT / SUMMARY WITH VISUAL -->
-  <section class="about-section">
-    <div class="about-text">
-      <h2 class="section-header">About</h2>
-      <p class="about-content">{{ summary }}</p>
+  <section class="cv-contact">
+    <h2 class="cv-label">Contact</h2>
+    <ul class="cv-contact-pills">
+      @for (item of profile.contact; track item.label) {
+        <li class="cv-pill">
+          @if (item.href) {
+            <a [href]="item.href" target="_blank" rel="noopener">{{ item.label }}</a>
+          } @else {
+            {{ item.label }}
+          }
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="cv-panel">
+    <div class="cv-col-main">
+      <h2 class="cv-label">Work Experience</h2>
+      @for (exp of profile.experience; track exp.company + exp.role) {
+        <article class="cv-exp">
+          <h3 class="cv-exp-role">{{ exp.role }}</h3>
+          <p class="cv-exp-meta">{{ exp.company }} &middot; {{ exp.dates }}</p>
+          <ul class="cv-exp-bullets">
+            @for (bullet of exp.bullets; track bullet) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+        </article>
+      }
     </div>
-    <div class="skill-badges">
-      @for(skill of skills.slice(0, 9); track skill.name) {
-        <div class="badge" [style.--level]="skill.level + '%'">
-          <span class="badge-label">{{ skill.name }}</span>
-          <span class="badge-percent">{{ skill.level }}%</span>
-        </div>
+
+    <div class="cv-col-side">
+      <section class="cv-side-block">
+        <h2 class="cv-label">Education</h2>
+        <p class="cv-edu-degree">{{ profile.education.degree }}</p>
+        <p class="cv-edu-school">{{ profile.education.school }}</p>
+        <p class="cv-edu-dates">{{ profile.education.dates }}</p>
+      </section>
+
+      @if (profile.certifications?.length) {
+        <section class="cv-side-block">
+          <h2 class="cv-label">Certifications</h2>
+          @for (cert of profile.certifications; track cert.name) {
+            <p class="cv-cert-name">{{ cert.name }}</p>
+            <p class="cv-cert-meta">{{ cert.issuer }} &middot; {{ cert.date }}</p>
+          }
+        </section>
+      }
+
+      <section class="cv-side-block">
+        <h2 class="cv-label">Skills</h2>
+        <ul class="cv-skill-list">
+          @for (skill of profile.skills; track skill) {
+            <li>{{ skill }}</li>
+          }
+        </ul>
+      </section>
+
+      @if (profile.languages?.length) {
+        <section class="cv-side-block">
+          <h2 class="cv-label">Languages</h2>
+          <p class="cv-languages-line">
+            @for (lang of profile.languages; track lang.name; let last = $last) {
+              {{ lang.name }} ({{ lang.level }}){{ last ? '' : ' · ' }}
+            }
+          </p>
+        </section>
       }
     </div>
   </section>
-
-  <!-- EXPERIENCE WITH CARDS -->
-  <section class="exp-section">
-    <h2 class="section-header">Experience</h2>
-    <div class="exp-cards">
-      @for(exp of experiences; track exp.company; let idx = $index) {
-        <div class="exp-card" [class.alt]="idx % 2 === 1">
-          <div class="exp-number">{{ idx + 1 }}</div>
-          <div class="exp-details">
-            <h3 class="exp-role">{{ exp.role }}</h3>
-            <p class="exp-company">{{ exp.company }}</p>
-            <p class="exp-date">{{ exp.dates }}</p>
-            <ul class="exp-list">
-              @for(bullet of exp.bullets; track bullet) {
-                <li>{{ bullet }}</li>
-              }
-            </ul>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
-
-  <!-- PROJECTS GRID WITH VISUAL FLAIR -->
-  <section class="projects-section">
-    <h2 class="section-header">Notable Projects</h2>
-    <div class="projects-masonry">
-      @for(proj of projects; track proj.name; let idx = $index) {
-        <div class="project-box" [class.large]="idx % 3 === 0">
-          <div class="project-inner">
-            <span class="project-number">{{ String.fromCharCode(65 + idx) }}</span>
-            <h3>{{ proj.name }}</h3>
-            <p>{{ proj.desc }}</p>
-            <div class="tech-stack">
-              @for(tech of proj.highlights; track tech) {
-                <span class="tech-pill">{{ tech }}</span>
-              }
-            </div>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
-
-  <!-- TOOLS & APPLICATIONS -->
-  <section class="skills-section">
-    <h2 class="section-header">Tools & Applications</h2>
-    <div class="tools-grid">
-      @for(tool of tools; track tool) {
-        <div class="tool-card">
-          <span class="tool-name">{{ tool }}</span>
-        </div>
-      }
-    </div>
-  </section>
-
-  <!-- FOOTER INFO -->
-  <section class="footer-section">
-    <div class="languages-box">
-      <h3>Languages</h3>
-      <div class="lang-items">
-        @for(lang of languages; track lang.name) {
-          <div class="lang-item">
-            <span class="lang-flag">●</span>
-            <span class="lang-text">{{ lang.name }}: <strong>{{ lang.level }}</strong></span>
-          </div>
-        }
-      </div>
-    </div>
-    <div class="education-box-footer">
-      <h3>Education</h3>
-      <p class="edu-title">{{ education.degree }}</p>
-      <p class="edu-inst">{{ education.school }}</p>
-      <p class="edu-date">{{ education.year }}</p>
-    </div>
-  </section>
-</div>
-
-<div class="controls">
-  <button class="download-btn" (click)="downloadPDF()">
-    📄 Export to PDF
-  </button>
-</div>
+</main>
