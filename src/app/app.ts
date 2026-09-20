@@ -5,7 +5,7 @@ import { activeProfile } from './profiles/active';
   selector: 'app-root',
   imports: [],
   templateUrl: './app.html',
-  styleUrls: ['./app.css'],
+  styleUrls: ['./app.css', './app.mobile.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {

@@ -13,8 +13,10 @@ const exportsDir = path.join(rootDir, 'exports');
 const args = process.argv.slice(2);
 const skipBuild = args.includes('--skip-build');
 const strict = args.includes('--strict');
+const mobile = args.includes('--mobile');
 
 const A4_HEIGHT_PX = 1123; // 297mm at 96dpi
+const MOBILE_WIDTH_PX = 390; // matches the app.mobile.css <=700px breakpoint
 
 function slugify(text) {
   return text
@@ -69,7 +71,12 @@ async function main() {
   let warned = false;
   try {
     const page = await browser.newPage();
-    await page.setViewport({ width: 794, height: 2000 });
+    // A small viewport height keeps .cv-page's `min-height` (100vh desktop / 100vh mobile)
+    // from becoming an artificial floor on the scrollHeight measurement below.
+    await page.setViewport({
+      width: mobile ? MOBILE_WIDTH_PX : 794,
+      height: 100,
+    });
     await page.goto(url, { waitUntil: 'networkidle0' });
     await page.waitForSelector('.cv-page');
     await page.evaluate(() => document.fonts.ready);
@@ -83,15 +90,17 @@ async function main() {
       };
     });
 
-    if (scrollHeight > A4_HEIGHT_PX) {
-      const overPx = scrollHeight - A4_HEIGHT_PX;
-      const overMm = (overPx * 297) / A4_HEIGHT_PX;
-      warned = true;
-      console.warn(
-        `Warning: profile "${profileId}" content is ${overPx}px (${overMm.toFixed(1)}mm) taller than one A4 page.`,
-      );
-    } else {
-      console.log(`Content fits one A4 page (${scrollHeight}px / ${A4_HEIGHT_PX}px).`);
+    if (!mobile) {
+      if (scrollHeight > A4_HEIGHT_PX) {
+        const overPx = scrollHeight - A4_HEIGHT_PX;
+        const overMm = (overPx * 297) / A4_HEIGHT_PX;
+        warned = true;
+        console.warn(
+          `Warning: profile "${profileId}" content is ${overPx}px (${overMm.toFixed(1)}mm) taller than one A4 page.`,
+        );
+      } else {
+        console.log(`Content fits one A4 page (${scrollHeight}px / ${A4_HEIGHT_PX}px).`);
+      }
     }
 
     if (!existsSync(exportsDir)) {
@@ -99,16 +108,31 @@ async function main() {
     }
 
     const date = new Date().toISOString().slice(0, 10);
-    const fileName = `${slugify(profileId)}-${slugify(name)}-${date}.pdf`;
+    const fileName = mobile
+      ? `${slugify(profileId)}-${slugify(name)}-mobile-${date}.pdf`
+      : `${slugify(profileId)}-${slugify(name)}-${date}.pdf`;
     const outPath = path.join(exportsDir, fileName);
 
     console.log('Generating PDF...');
-    await page.pdf({
-      path: outPath,
-      format: 'A4',
-      printBackground: true,
-      margin: { top: 0, right: 0, bottom: 0, left: 0 },
-    });
+    if (mobile) {
+      // No A4 pagination: one continuous page sized exactly to the mobile-reflowed content,
+      // like a long single-page screenshot, so nothing needs pinch-zooming on a phone.
+      console.log(`Mobile content height: ${scrollHeight}px at ${MOBILE_WIDTH_PX}px width.`);
+      await page.pdf({
+        path: outPath,
+        width: `${MOBILE_WIDTH_PX}px`,
+        height: `${scrollHeight}px`,
+        printBackground: true,
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+      });
+    } else {
+      await page.pdf({
+        path: outPath,
+        format: 'A4',
+        printBackground: true,
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+      });
+    }
 
     console.log(`Saved ${outPath}`);
   } finally {

@@ -1,0 +1,84 @@
+/* Mobile-only overrides for on-screen viewing (phones/small tablets).
+   Scoped to <=700px so the fixed-width A4 print layout used for PDF export
+   (rendered at a 794px viewport by scripts/export-pdf.mjs) is unaffected. */
+@media (max-width: 700px) {
+  .cv-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 28px 20px;
+  }
+
+  /* HEADER: stack photo+pill above name+summary, centered */
+  .cv-header {
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .cv-header-photo-col {
+    width: auto;
+    align-items: center;
+  }
+
+  .cv-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cv-title-pill {
+    width: auto;
+    white-space: nowrap;
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .cv-header-text-col {
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cv-name {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .cv-summary {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* CONTACT: two columns fit phone widths better than three */
+  .cv-contact {
+    margin-bottom: 22px;
+  }
+
+  .cv-contact-pills {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .cv-pill {
+    font-size: 12.5px;
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+
+  /* PANEL: single column, experience above education/skills/languages */
+  .cv-panel {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .cv-exp-bullets,
+  .cv-skill-list {
+    font-size: 13px;
+  }
+
+  .cv-label {
+    font-size: 17px;
+  }
+}

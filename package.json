@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:gcv": "node dist/gcv/server/server.mjs",
-    "export:pdf": "node scripts/export-pdf.mjs"
+    "export:pdf": "node scripts/export-pdf.mjs",
+    "export:pdf:mobile": "node scripts/export-pdf.mjs --mobile",
+    "export:word": "node scripts/export-word.mjs"
   },
   "prettier": {
     "printWidth": 100,
@@ -44,6 +46,7 @@
     "@angular/compiler-cli": "^21.0.0",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
+    "docx": "^9.7.1",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
