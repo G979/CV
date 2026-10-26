@@ -65,7 +65,9 @@ async function main() {
   const url = `http://localhost:${port}/`;
   console.log(`Serving ${browserDistDir} at ${url}`);
   // ?print shows private contacts (phone number) that the public site hides.
-  const printUrl = `${url}?print`;
+  // --theme=<name> exports with a different color scheme (see src/app/theme.ts).
+  const themeArg = args.find((a) => a.startsWith('--theme='));
+  const printUrl = themeArg ? `${url}?print&theme=${encodeURIComponent(themeArg.slice(8))}` : `${url}?print`;
 
   console.log('Launching headless browser...');
   const browser = await puppeteer.launch({ headless: 'new' });

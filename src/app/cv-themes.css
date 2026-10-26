@@ -1,0 +1,125 @@
+/*
+ * CV color schemes. The default is set in src/app/theme.ts;
+ * add ?theme=<name> to the URL to preview another one.
+ */
+
+/* Peach: the original lavender-to-peach look (default) */
+.cv-page,
+.cv-page[data-theme='peach'] {
+  --cv-bg: linear-gradient(135deg, #ece5f7 0%, #fbe8d7 100%);
+  --cv-ink: #1c1c1c;
+  --cv-heading: #111;
+  --cv-role: #111;
+  --cv-summary: #333;
+  --cv-text: #2b2b2b;
+  --cv-muted: #555;
+  --cv-line: rgba(17, 17, 17, 0.85);
+  --cv-accent: #2b2b2b;
+  --cv-pill-bg: #111;
+  --cv-pill-text: #fff;
+  --cv-chip-bg: rgba(255, 255, 255, 0.5);
+  --cv-chip-border: rgba(0, 0, 0, 0.15);
+  --cv-panel-bg: rgba(255, 255, 255, 0.25);
+  --cv-panel-border: rgba(0, 0, 0, 0.12);
+  --cv-photo-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Ocean: navy and cyan, matches the portfolio site */
+.cv-page[data-theme='ocean'] {
+  --cv-bg: linear-gradient(160deg, #f4f9fc 0%, #e3f1f8 100%);
+  --cv-ink: #0b1f33;
+  --cv-heading: #0b1f33;
+  --cv-role: #0b1f33;
+  --cv-summary: #2c4256;
+  --cv-text: #2c3e50;
+  --cv-muted: #5a7389;
+  --cv-line: #0891b2;
+  --cv-accent: #0891b2;
+  --cv-pill-bg: #0b1f33;
+  --cv-pill-text: #e0f7fc;
+  --cv-chip-bg: rgba(255, 255, 255, 0.75);
+  --cv-chip-border: rgba(8, 145, 178, 0.3);
+  --cv-panel-bg: rgba(255, 255, 255, 0.6);
+  --cv-panel-border: rgba(11, 31, 51, 0.1);
+  --cv-photo-shadow: 0 8px 22px rgba(11, 31, 51, 0.18);
+}
+
+/* Espresso: warm ivory, dark brown and gold, like the Word export */
+.cv-page[data-theme='espresso'] {
+  --cv-bg: linear-gradient(160deg, #faf6ef 0%, #f1e9dc 100%);
+  --cv-ink: #2a2118;
+  --cv-heading: #362b1e;
+  --cv-role: #2a2118;
+  --cv-summary: #4a3f33;
+  --cv-text: #3a3027;
+  --cv-muted: #8a7560;
+  --cv-line: #b8894a;
+  --cv-accent: #b8894a;
+  --cv-pill-bg: #362b1e;
+  --cv-pill-text: #f3e6cf;
+  --cv-chip-bg: rgba(255, 255, 255, 0.6);
+  --cv-chip-border: rgba(184, 137, 74, 0.35);
+  --cv-panel-bg: rgba(255, 255, 255, 0.45);
+  --cv-panel-border: rgba(54, 43, 30, 0.12);
+  --cv-photo-shadow: 0 8px 22px rgba(54, 43, 30, 0.2);
+}
+
+/* Sage: soft green and deep forest */
+.cv-page[data-theme='sage'] {
+  --cv-bg: linear-gradient(150deg, #eef3ec 0%, #e2ebe0 100%);
+  --cv-ink: #1d2b22;
+  --cv-heading: #1f3a2b;
+  --cv-role: #1d2b22;
+  --cv-summary: #34463a;
+  --cv-text: #2e3d33;
+  --cv-muted: #5f7566;
+  --cv-line: #2f6b4a;
+  --cv-accent: #2f6b4a;
+  --cv-pill-bg: #1f3a2b;
+  --cv-pill-text: #e6f2e9;
+  --cv-chip-bg: rgba(255, 255, 255, 0.6);
+  --cv-chip-border: rgba(47, 107, 74, 0.25);
+  --cv-panel-bg: rgba(255, 255, 255, 0.45);
+  --cv-panel-border: rgba(31, 58, 43, 0.12);
+  --cv-photo-shadow: 0 8px 22px rgba(31, 58, 43, 0.18);
+}
+
+/* Slate: clean grey and white with a coral accent */
+.cv-page[data-theme='slate'] {
+  --cv-bg: #f6f7f9;
+  --cv-ink: #1f2933;
+  --cv-heading: #1f2933;
+  --cv-role: #1f2933;
+  --cv-summary: #3e4c59;
+  --cv-text: #323f4b;
+  --cv-muted: #66788a;
+  --cv-line: #e5604d;
+  --cv-accent: #e5604d;
+  --cv-pill-bg: #1f2933;
+  --cv-pill-text: #fff;
+  --cv-chip-bg: #fff;
+  --cv-chip-border: #dde2e8;
+  --cv-panel-bg: #fff;
+  --cv-panel-border: #e4e8ee;
+  --cv-photo-shadow: 0 8px 20px rgba(31, 41, 51, 0.14);
+}
+
+/* Midnight: dark navy with cyan, best on screen (uses more ink if printed) */
+.cv-page[data-theme='midnight'] {
+  --cv-bg: linear-gradient(160deg, #0b1424 0%, #0f1d33 100%);
+  --cv-ink: #e6eef7;
+  --cv-heading: #ffffff;
+  --cv-role: #ffffff;
+  --cv-summary: #b8c7d9;
+  --cv-text: #c9d6e5;
+  --cv-muted: #7f95ad;
+  --cv-line: #22d3ee;
+  --cv-accent: #22d3ee;
+  --cv-pill-bg: #22d3ee;
+  --cv-pill-text: #06202a;
+  --cv-chip-bg: rgba(255, 255, 255, 0.05);
+  --cv-chip-border: rgba(34, 211, 238, 0.3);
+  --cv-panel-bg: rgba(255, 255, 255, 0.04);
+  --cv-panel-border: rgba(255, 255, 255, 0.1);
+  --cv-photo-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+}
