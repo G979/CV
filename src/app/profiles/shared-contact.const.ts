@@ -4,7 +4,7 @@ export const baseIdentity = {
   name: 'Georgios Vasilakis',
   photo: 'assets/george.jpg',
   contact: [
-    { label: '+30 694 442 8973', href: 'tel:+306944428973' },
+    { label: '+30 694 442 8973', href: 'tel:+306944428973', private: true },
     { label: 'g979design@gmail.com', href: 'mailto:g979design@gmail.com' },
     { label: 'Athens, Greece' },
     { label: 'github.com/G979', href: 'https://github.com/G979' },

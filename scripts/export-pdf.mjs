@@ -64,6 +64,8 @@ async function main() {
   const { server, port } = await startServer(browserDistDir);
   const url = `http://localhost:${port}/`;
   console.log(`Serving ${browserDistDir} at ${url}`);
+  // ?print shows private contacts (phone number) that the public site hides.
+  const printUrl = `${url}?print`;
 
   console.log('Launching headless browser...');
   const browser = await puppeteer.launch({ headless: 'new' });
@@ -77,8 +79,8 @@ async function main() {
       width: mobile ? MOBILE_WIDTH_PX : 794,
       height: 100,
     });
-    await page.goto(url, { waitUntil: 'networkidle0' });
-    await page.waitForSelector('.cv-page');
+    await page.goto(printUrl, { waitUntil: 'networkidle0' });
+    await page.waitForSelector('.cv-page[data-show-private="true"]');
     await page.evaluate(() => document.fonts.ready);
 
     const { scrollHeight, profileId, name } = await page.evaluate(() => {

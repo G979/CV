@@ -1,4 +1,4 @@
-<main class="cv-page" [attr.data-profile-id]="profile.id">
+<main class="cv-page" [attr.data-profile-id]="profile.id" [attr.data-show-private]="showPrivate()">
   <header class="cv-header">
     <div class="cv-header-photo-col">
       <img class="cv-photo" [src]="profile.photo" alt="{{ profile.name }}">
@@ -13,7 +13,7 @@
   <section class="cv-contact">
     <h2 class="cv-label">Contact</h2>
     <ul class="cv-contact-pills">
-      @for (item of profile.contact; track item.label) {
+      @for (item of contacts(); track item.label) {
         <li class="cv-pill">
           @if (item.href) {
             <a [href]="item.href" target="_blank" rel="noopener">{{ item.label }}</a>

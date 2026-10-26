@@ -1,6 +1,8 @@
 export interface ContactPill {
   label: string;
   href?: string;
+  /** Left out of the public website; only shown in exported PDFs (page opened with ?print). */
+  private?: boolean;
 }
 
 export interface CvExperience {
