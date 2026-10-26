@@ -39,7 +39,7 @@ const profile = {
     'g979design@gmail.com',
     'Athens, Greece',
     'github.com/G979',
-    'linkedin.com/in/george-vasilakis',
+    'linkedin.com/in/george-vasilakis-dev',
   ],
   summary:
     'Frontend-focused software engineer based in Athens with 5+ years building responsive Angular and React applications. I care about clean component architecture, smooth UX, and getting pixel-perfect designs into production fast — with a full-stack Laravel/Node background to back it up when the API needs shaping too.',

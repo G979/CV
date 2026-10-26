@@ -8,7 +8,7 @@ export const baseIdentity = {
     { label: 'g979design@gmail.com', href: 'mailto:g979design@gmail.com' },
     { label: 'Athens, Greece' },
     { label: 'github.com/G979', href: 'https://github.com/G979' },
-    { label: 'linkedin.com/in/george-vasilakis', href: 'https://www.linkedin.com/in/george-vasilakis-057562292/' },
+    { label: 'linkedin.com/in/george-vasilakis-dev', href: 'https://www.linkedin.com/in/george-vasilakis-dev/' },
   ] as ContactPill[],
   education: {
     degree: 'B.Eng. Electrical & Computer Engineering',
