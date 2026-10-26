@@ -11,9 +11,9 @@ export const blockchainProfile: CvProfile = {
     {
       role: 'Software Engineer',
       company: 'Digital Academy',
-      dates: 'Oct 2023 – Present',
+      dates: 'Oct 2023 – Oct 2026',
       bullets: [
-        'Led development of a transfer platform processing 2,000+ monthly B2B transactions',
+        'Led development of a transfer platform processing 10,000+ monthly B2B transactions',
         'Built secure, production Angular/PHP Laravel applications for 100+ companies',
         'Improved client experience across 4 pre-existing applications',
       ],

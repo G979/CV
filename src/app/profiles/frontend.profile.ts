@@ -11,11 +11,11 @@ export const frontendProfile: CvProfile = {
     {
       role: 'Software Engineer',
       company: 'Digital Academy',
-      dates: 'Oct 2023 – Present',
+      dates: 'Oct 2023 – Oct 2026',
       bullets: [
         'Built responsive Angular and React applications for 100+ companies, improving UX across 4 legacy apps',
         'Mentored junior developers through a full frontend training program',
-        'Led development of a transfer platform processing 2,000+ monthly B2B transactions',
+        'Led development of a transfer platform processing 10,000+ monthly B2B transactions',
       ],
     },
     {

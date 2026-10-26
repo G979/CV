@@ -9,7 +9,6 @@ export const baseIdentity = {
     { label: 'Athens, Greece' },
     { label: 'github.com/G979', href: 'https://github.com/G979' },
     { label: 'linkedin.com/in/george-vasilakis', href: 'https://www.linkedin.com/in/george-vasilakis-057562292/' },
-    { label: 'facebook.com/george.vasilakis1', href: 'https://www.facebook.com/george.vasilakis1' },
   ] as ContactPill[],
   education: {
     degree: 'B.Eng. Electrical & Computer Engineering',

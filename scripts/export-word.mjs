@@ -40,7 +40,6 @@ const profile = {
     'Athens, Greece',
     'github.com/G979',
     'linkedin.com/in/george-vasilakis',
-    'facebook.com/george.vasilakis1',
   ],
   summary:
     'Frontend-focused software engineer based in Athens with 5+ years building responsive Angular and React applications. I care about clean component architecture, smooth UX, and getting pixel-perfect designs into production fast — with a full-stack Laravel/Node background to back it up when the API needs shaping too.',
@@ -48,11 +47,11 @@ const profile = {
     {
       role: 'Software Engineer',
       company: 'Digital Academy',
-      dates: 'Oct 2023 – Present',
+      dates: 'Oct 2023 – Oct 2026',
       bullets: [
         'Built responsive Angular and React applications for 100+ companies, improving UX across 4 legacy apps',
         'Mentored junior developers through a full frontend training program',
-        'Led development of a transfer platform processing 2,000+ monthly B2B transactions',
+        'Led development of a transfer platform processing 10,000+ monthly B2B transactions',
       ],
     },
     {
